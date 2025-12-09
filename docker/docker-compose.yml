@@ -1,0 +1,26 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cake_php
+    ports:
+      - "8080:80"
+    volumes:
+      - ../system:/var/www/html
+      - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
+    depends_on:
+      - db
+    restart: unless-stopped
+  
+  db:
+    container_name: mysql_cake
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_DATABASE: system
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database:/var/lib/mysql
+    restart: unless-stopped

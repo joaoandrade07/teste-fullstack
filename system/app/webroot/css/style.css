@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    margin-bottom: 0 !important;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p{
+    margin: 0 !important;
+}
